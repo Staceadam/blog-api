@@ -1,0 +1,26 @@
+# Use postgres/example user/password credentials
+version: "3.1"
+
+services:
+    api:
+        image: node-api:latest
+        restart: always
+        ports:
+            - 3000:3000
+    db:
+        image: postgres
+        restart: always
+        ports:
+            - 5432:5432
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: root
+            POSTGRES_PASSWORD: example
+            POSTGRES_DB: mydb
+
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
