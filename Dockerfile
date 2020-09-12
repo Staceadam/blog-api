@@ -1,6 +1,6 @@
 FROM node
-WORKDIR /api
-COPY package.json /api
+WORKDIR /tmp
+COPY /api/package.json /tmp
 RUN npm install
-COPY . /api
+COPY /api/. /tmp
 CMD ["npm", "start"]
